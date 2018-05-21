@@ -11,6 +11,10 @@
 		3D3A83DD1B438ABBCE2ADF0B /* Pods_ProofOfConceptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CFB34C81EAA616DE5310B5 /* Pods_ProofOfConceptTests.framework */; };
 		5A77635C4EC349A15B657432 /* Pods_ProofOfConceptUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC2DB5D5327E4E8D9D99D6F /* Pods_ProofOfConceptUITests.framework */; };
 		830CB9D3C3EC66785BE0ADFB /* Pods_ProofOfConcept.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D18E190A84AE667DA28D5A /* Pods_ProofOfConcept.framework */; };
+		E4463ED820B2CAD5002F0885 /* POCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */; };
+		E4463ED920B2CAD5002F0885 /* POCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */; };
+		E4463EDA20B2CAD5002F0885 /* POCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */; };
+		E4463EDB20B2CAD5002F0885 /* POCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */; };
 		E4BE0D7320B2796B000BF776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0D7220B2796B000BF776 /* AppDelegate.swift */; };
 		E4BE0D7520B2796B000BF776 /* POCFactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0D7420B2796B000BF776 /* POCFactsTableViewController.swift */; };
 		E4BE0D7A20B2796B000BF776 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4BE0D7920B2796B000BF776 /* Assets.xcassets */; };
@@ -69,6 +73,7 @@
 		A815CB5703DFC9296830295E /* Pods-ProofOfConceptTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProofOfConceptTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProofOfConceptTests/Pods-ProofOfConceptTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0CDFCB4CA89FD8B187E8F6 /* Pods-ProofOfConcept.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProofOfConcept.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProofOfConcept/Pods-ProofOfConcept.debug.xcconfig"; sourceTree = "<group>"; };
 		E06C9648F8973CEC6645779A /* Pods_ProofOfConceptDataParsingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProofOfConceptDataParsingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCTableViewCell.swift; sourceTree = "<group>"; };
 		E4BE0D6F20B2796B000BF776 /* ProofOfConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProofOfConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BE0D7220B2796B000BF776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4BE0D7420B2796B000BF776 /* POCFactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POCFactsTableViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +159,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E4463EDC20B2CADA002F0885 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4463ED720B2CAD5002F0885 /* POCTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E4BE0D6620B2796B000BF776 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E4BE0D7220B2796B000BF776 /* AppDelegate.swift */,
+				E4463EDC20B2CADA002F0885 /* View */,
 				E4BE0DAF20B2B9D7000BF776 /* Model */,
 				E4BE0DA020B29A91000BF776 /* Controller */,
 				E4BE0DA520B29AE9000BF776 /* Networking */,
@@ -482,11 +496,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ProofOfConcept/Pods-ProofOfConcept-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BE0DA220B29AD9000BF776 /* POCServiceClass.swift in Sources */,
+				E4463ED820B2CAD5002F0885 /* POCTableViewCell.swift in Sources */,
 				E4BE0DC720B2C474000BF776 /* MBProgressHUD.m in Sources */,
 				E4BE0D7520B2796B000BF776 /* POCFactsTableViewController.swift in Sources */,
 				E4BE0DAC20B2B9D2000BF776 /* POCFacts.swift in Sources */,
@@ -653,6 +670,7 @@
 				E4BE0DAD20B2B9D2000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DA920B2A03C000BF776 /* POCConstants.swift in Sources */,
 				E4BE0DC820B2C474000BF776 /* MBProgressHUD.m in Sources */,
+				E4463ED920B2CAD5002F0885 /* POCTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +682,7 @@
 				E4BE0DAE20B2B9D2000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DAA20B2A03C000BF776 /* POCConstants.swift in Sources */,
 				E4BE0DC920B2C474000BF776 /* MBProgressHUD.m in Sources */,
+				E4463EDA20B2CAD5002F0885 /* POCTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4463EDB20B2CAD5002F0885 /* POCTableViewCell.swift in Sources */,
 				E4BE0DC020B2BD75000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DBE20B2BC13000BF776 /* POCConstants.swift in Sources */,
 				E4BE0DCA20B2C474000BF776 /* MBProgressHUD.m in Sources */,

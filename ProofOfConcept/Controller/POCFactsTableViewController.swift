@@ -12,7 +12,7 @@ import Reachability
 class POCFactsTableViewController: UITableViewController {
   
   let service = POCServiceClass()
-  var factsArray: [Any] = []
+  var factsArray: [POCFacts] = []
   let reachability = Reachability()!
   var spinnerActivity: MBProgressHUD?
   
@@ -22,7 +22,7 @@ class POCFactsTableViewController: UITableViewController {
     
     self.title = "POC"
     
-    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    self.tableView.register(POCTableViewCell.self, forCellReuseIdentifier: POCConstants.POCTableViewCellIdentifier)
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 120
     self.tableView.separatorInset = .zero
@@ -60,6 +60,7 @@ class POCFactsTableViewController: UITableViewController {
         //        Create facts array
         if let results = results {
           self.factsArray = results
+          self.tableView.reloadData()
         }
         
         //Check for Error Message
@@ -107,7 +108,11 @@ extension POCFactsTableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: POCConstants.POCTableViewCellIdentifier, for: indexPath) as! POCTableViewCell
+    
+    cell.titleLabel.text = self.factsArray[indexPath.row].title
+    cell.descriptionLabel.text = self.factsArray[indexPath.row].description
+    
     return cell
     
   }

@@ -5,7 +5,7 @@ target 'ProofOfConcept' do
   
   pod 'ReachabilitySwift'
   pod 'SwiftyJSON', '~> 4.0'
-
+  pod 'SnapKit', '~> 4.0.0'
   
   target 'ProofOfConceptTests' do
     inherit! :search_paths
