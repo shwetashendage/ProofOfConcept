@@ -17,10 +17,12 @@ class POCServiceClass {
   
   var errorMessage = ""
   var headerTitle = ""
+  var errorString = ""
   var factsArray: [POCFacts] = []
   
   typealias JSONDictinary = [String: Any]
   typealias factsResult = ([POCFacts]?, String, String) -> ()
+  typealias factsImageResult = (UIImage?, String) -> ()
 
   func getFacts(completion: @escaping factsResult) {
     
@@ -67,7 +69,7 @@ class POCServiceClass {
         let json = try JSON(data: dataFromString)
         
         headerTitle = json[POCConstants.POCKeys.POCHeaderTitle].stringValue
-
+        
         guard let array = json[POCConstants.POCKeys.POCArray].arrayObject else{
           return
         }
@@ -86,6 +88,50 @@ class POCServiceClass {
       }
       
     }
+  }
+  
+  func getImageFromUrlString(urlString:String, completion: @escaping factsImageResult ){
+    // Image download
+    
+    guard let url = URL(string: urlString) else {
+      return
+    }
+    dataTask = defaultSession.dataTask(with: url, completionHandler: {data, response, error in
+      if let error = error {
+        
+        self.errorString += "Error cause: " + error.localizedDescription + "\n"
+        
+        
+        DispatchQueue.main.async {
+          
+          completion(nil, self.errorString)
+          
+        }
+        
+        
+      }else if let data = data,
+        let response = response as? HTTPURLResponse ,
+        response.statusCode == 200 {
+        
+        if let image = UIImage(data: data){
+          DispatchQueue.main.async {
+            
+            completion(image, self.errorString)
+            
+          }
+        }
+        else{
+          
+          DispatchQueue.main.async {
+            
+            completion(nil, self.errorString)
+            
+          }
+        }
+        
+      }
+    })
+    dataTask?.resume()
   }
   
 }

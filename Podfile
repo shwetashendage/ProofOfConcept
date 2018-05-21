@@ -19,7 +19,8 @@ target 'ProofOfConcept' do
   
   target 'ProofOfConceptUITests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'SnapKit', '~> 4.0.0'
+    pod 'SwiftyJSON', '~> 4.0'
   end
   
 end
