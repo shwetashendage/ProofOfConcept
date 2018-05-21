@@ -27,6 +27,10 @@
 		E4BE0DBE20B2BC13000BF776 /* POCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DA720B2A03C000BF776 /* POCConstants.swift */; };
 		E4BE0DBF20B2BC43000BF776 /* POCServiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DA120B29AD9000BF776 /* POCServiceClass.swift */; };
 		E4BE0DC020B2BD75000BF776 /* POCFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DAB20B2B9D2000BF776 /* POCFacts.swift */; };
+		E4BE0DC720B2C474000BF776 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */; };
+		E4BE0DC820B2C474000BF776 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */; };
+		E4BE0DC920B2C474000BF776 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */; };
+		E4BE0DCA20B2C474000BF776 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,9 @@
 		E4BE0DB420B2BB98000BF776 /* ProofOfConceptDataParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProofOfConceptDataParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BE0DB620B2BB98000BF776 /* ProofOfConceptDataParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofOfConceptDataParsingTests.swift; sourceTree = "<group>"; };
 		E4BE0DB820B2BB98000BF776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4BE0DC120B2C471000BF776 /* ProofOfConcept-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProofOfConcept-Bridging-Header.h"; sourceTree = "<group>"; };
+		E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E4BE0DC620B2C474000BF776 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		F93B9AB60BC8DA4F32CBF084 /* Pods-ProofOfConceptUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProofOfConceptUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProofOfConceptUITests/Pods-ProofOfConceptUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,9 +185,11 @@
 				E4BE0DAF20B2B9D7000BF776 /* Model */,
 				E4BE0DA020B29A91000BF776 /* Controller */,
 				E4BE0DA520B29AE9000BF776 /* Networking */,
+				E4BE0DCB20B2C4B9000BF776 /* MBProgressHUD */,
 				E4BE0DA720B2A03C000BF776 /* POCConstants.swift */,
 				E4BE0D7920B2796B000BF776 /* Assets.xcassets */,
 				E4BE0D7E20B2796B000BF776 /* Info.plist */,
+				E4BE0DC120B2C471000BF776 /* ProofOfConcept-Bridging-Header.h */,
 			);
 			path = ProofOfConcept;
 			sourceTree = "<group>";
@@ -234,6 +243,15 @@
 				E4BE0DB820B2BB98000BF776 /* Info.plist */,
 			);
 			path = ProofOfConceptDataParsingTests;
+			sourceTree = "<group>";
+		};
+		E4BE0DCB20B2C4B9000BF776 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E4BE0DC620B2C474000BF776 /* MBProgressHUD.h */,
+				E4BE0DC520B2C473000BF776 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,20 +352,24 @@
 				TargetAttributes = {
 					E4BE0D6E20B2796B000BF776 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					E4BE0D8220B2796C000BF776 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E4BE0D6E20B2796B000BF776;
 					};
 					E4BE0D8D20B2796C000BF776 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E4BE0D6E20B2796B000BF776;
 					};
 					E4BE0DB320B2BB98000BF776 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E4BE0D6E20B2796B000BF776;
 					};
@@ -615,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BE0DA220B29AD9000BF776 /* POCServiceClass.swift in Sources */,
+				E4BE0DC720B2C474000BF776 /* MBProgressHUD.m in Sources */,
 				E4BE0D7520B2796B000BF776 /* POCFactsTableViewController.swift in Sources */,
 				E4BE0DAC20B2B9D2000BF776 /* POCFacts.swift in Sources */,
 				E4BE0D7320B2796B000BF776 /* AppDelegate.swift in Sources */,
@@ -629,6 +652,7 @@
 				E4BE0D8820B2796C000BF776 /* ProofOfConceptTests.swift in Sources */,
 				E4BE0DAD20B2B9D2000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DA920B2A03C000BF776 /* POCConstants.swift in Sources */,
+				E4BE0DC820B2C474000BF776 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +663,7 @@
 				E4BE0D9320B2796C000BF776 /* ProofOfConceptUITests.swift in Sources */,
 				E4BE0DAE20B2B9D2000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DAA20B2A03C000BF776 /* POCConstants.swift in Sources */,
+				E4BE0DC920B2C474000BF776 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +673,7 @@
 			files = (
 				E4BE0DC020B2BD75000BF776 /* POCFacts.swift in Sources */,
 				E4BE0DBE20B2BC13000BF776 /* POCConstants.swift in Sources */,
+				E4BE0DCA20B2C474000BF776 /* MBProgressHUD.m in Sources */,
 				E4BE0DB720B2BB98000BF776 /* ProofOfConceptDataParsingTests.swift in Sources */,
 				E4BE0DBF20B2BC43000BF776 /* POCServiceClass.swift in Sources */,
 			);
@@ -787,12 +813,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConcept/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConcept;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -804,12 +833,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConcept/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConcept;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -821,11 +852,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";
@@ -838,11 +872,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";
@@ -854,11 +890,14 @@
 			baseConfigurationReference = F93B9AB60BC8DA4F32CBF084 /* Pods-ProofOfConceptUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ProofOfConcept;
@@ -870,11 +909,13 @@
 			baseConfigurationReference = A30458C26EEF74D73F804EF7 /* Pods-ProofOfConceptUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ProofOfConcept;
@@ -886,11 +927,14 @@
 			baseConfigurationReference = 09AA9A4952CDF74F0D1ACA34 /* Pods-ProofOfConceptDataParsingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptDataParsingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptDataParsingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";
@@ -902,11 +946,13 @@
 			baseConfigurationReference = 99C7BD830E314004CEE92DFC /* Pods-ProofOfConceptDataParsingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProofOfConceptDataParsingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Shweta.ProofOfConceptDataParsingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProofOfConcept/ProofOfConcept-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";

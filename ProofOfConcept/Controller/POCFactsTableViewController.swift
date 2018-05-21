@@ -14,6 +14,7 @@ class POCFactsTableViewController: UITableViewController {
   let service = POCServiceClass()
   var factsArray: [Any] = []
   let reachability = Reachability()!
+  var spinnerActivity: MBProgressHUD?
   
   //      MARK: - Lifecycle
   override func viewDidLoad() {
@@ -41,8 +42,33 @@ class POCFactsTableViewController: UITableViewController {
       self.showAlertWith(title: "Message", message: "No Internet connection.")
     }
     else{
+      
+      //Show Progress View
+      self.showIndicator()
+      
       //    Call Service
-      service.getFacts()
+      service.getFacts(){ results, headerTitle, errorMessage in
+        
+        //Hide Progress View
+        self.hideIndicator()
+        
+        //        Update Header Title
+        if !headerTitle.isEmpty {
+          self.title = headerTitle
+        }
+        
+        //        Create facts array
+        if let results = results {
+          self.factsArray = results
+        }
+        
+        //Check for Error Message
+        if !errorMessage.isEmpty {
+          print("Error: " + errorMessage)
+          self.showAlertWith(title: "Message", message: "Error occurred")
+        }
+        
+      }
     }
   }
   
@@ -53,6 +79,21 @@ class POCFactsTableViewController: UITableViewController {
     }
     alertController.addAction(action)
     self.present(alertController, animated: true, completion: nil)
+  }
+  //  MARK: - MBProgressHUD
+  func showIndicator() {
+    
+    DispatchQueue.main.async {
+      self.spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true);
+      self.spinnerActivity?.label.text = "Please Wait...";
+      self.spinnerActivity?.isUserInteractionEnabled = true;
+    }
+  }
+  
+  func hideIndicator() {
+    DispatchQueue.main.async {
+      self.spinnerActivity?.hide(animated: true)
+    }
   }
   
 }

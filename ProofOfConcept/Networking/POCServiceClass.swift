@@ -16,11 +16,13 @@ class POCServiceClass {
   var dataTask: URLSessionDataTask?
   
   var errorMessage = ""
+  var headerTitle = ""
+  var factsArray: [POCFacts] = []
   
-  var factsArray: [Any] = []
   typealias JSONDictinary = [String: Any]
-  
-  func getFacts() {
+  typealias factsResult = ([POCFacts]?, String, String) -> ()
+
+  func getFacts(completion: @escaping factsResult) {
     
     //    Webservice call
     dataTask?.cancel()
@@ -43,7 +45,9 @@ class POCServiceClass {
         //        Parse Data
         self.createFactsArray(data)
       }
-      
+      DispatchQueue.main.async {
+        completion(self.factsArray, self.headerTitle, self.errorMessage)
+      }
     }
     
     dataTask?.resume()
@@ -51,6 +55,10 @@ class POCServiceClass {
   }
   func createFactsArray(_ data: Data) {
     //     Parse data
+    
+    //Remove all objects always
+    factsArray.removeAll()
+    
     let jsonString = NSString(data: data, encoding: String.Encoding.isoLatin1.rawValue)
     
     if let dataFromString = jsonString?.data(using: String.Encoding.utf8.rawValue) {
@@ -58,6 +66,8 @@ class POCServiceClass {
         
         let json = try JSON(data: dataFromString)
         
+        headerTitle = json[POCConstants.POCKeys.POCHeaderTitle].stringValue
+
         guard let array = json[POCConstants.POCKeys.POCArray].arrayObject else{
           return
         }
