@@ -21,17 +21,17 @@ class POCFactsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.title = "POC"
+    title = "POC"
     
-    self.tableView.register(POCTableViewCell.self, forCellReuseIdentifier: POCConstants.POCTableViewCellIdentifier)
-    self.tableView.rowHeight = UITableViewAutomaticDimension
-    self.tableView.estimatedRowHeight = 120
-    self.tableView.separatorInset = .zero
-    self.tableView.accessibilityIdentifier = POCConstants.POCTableViewIdentifier
+    tableView.register(POCTableViewCell.self, forCellReuseIdentifier: POCConstants.POCTableViewCellIdentifier)
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 120
+    tableView.separatorInset = .zero
+    tableView.accessibilityIdentifier = POCConstants.POCTableViewIdentifier
     
     //Refresh control
-    self.refreshControl = UIRefreshControl()
-    self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    refreshControl = UIRefreshControl()
+    refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     
     cache = NSCache()
     
@@ -46,16 +46,16 @@ class POCFactsTableViewController: UITableViewController {
   //  MARK: - Public Methods
   func getData() {
     
-    if reachability.connection == .none{
-      self.showAlertWith(title: "Message", message: "No Internet connection.")
+    if reachability.connection == .none {
+      showAlertWith(title: "", message: POCConstants.POCNoInternetMessage)
     }
     else{
       
       //Show Progress View
-      self.showIndicator()
+      showIndicator()
       
       //End Refreshing
-      self.refreshControl?.endRefreshing()
+      refreshControl?.endRefreshing()
       
       //    Call Service
       service.getFacts(){ results, headerTitle, errorMessage in
@@ -77,7 +77,7 @@ class POCFactsTableViewController: UITableViewController {
         //Check for Error Message
         if !errorMessage.isEmpty {
           print("Error: " + errorMessage)
-          self.showAlertWith(title: "Message", message: "Error occurred")
+          self.showAlertWith(title: "", message: POCConstants.POCErrorMessage )
         }
         
       }
@@ -90,14 +90,14 @@ class POCFactsTableViewController: UITableViewController {
       self.dismiss(animated: true, completion: nil)
     }
     alertController.addAction(action)
-    self.present(alertController, animated: true, completion: nil)
+    present(alertController, animated: true, completion: nil)
   }
   //  MARK: - MBProgressHUD
   func showIndicator() {
     
     DispatchQueue.main.async {
       self.spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true);
-      self.spinnerActivity?.label.text = "Please Wait...";
+      self.spinnerActivity?.label.text = POCConstants.POCNoProgressViewMessage;
       self.spinnerActivity?.isUserInteractionEnabled = true;
     }
   }
@@ -118,35 +118,35 @@ class POCFactsTableViewController: UITableViewController {
 extension POCFactsTableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.factsArray.count
+    return factsArray.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: POCConstants.POCTableViewCellIdentifier, for: indexPath) as! POCTableViewCell
     
-    cell.titleLabel.text = self.factsArray[indexPath.row].title
-    cell.descriptionLabel.text = self.factsArray[indexPath.row].description
+    cell.titleLabel.text = factsArray[indexPath.row].title
+    cell.descriptionLabel.text = factsArray[indexPath.row].description
     cell.imageProfile.image = #imageLiteral(resourceName: "default-user-image")
     
-    if self.factsArray[indexPath.row].imageHref == POCConstants.POCNoImage{
+    if factsArray[indexPath.row].imageHref == POCConstants.POCNoImage {
       
-    }else if self.cache.object(forKey: self.factsArray[indexPath.row].imageHref! as AnyObject) != nil{
-      cell.imageProfile.image = (self.cache.object(forKey: self.factsArray[indexPath.row].imageHref! as AnyObject) as! UIImage)
+    }else if cache.object(forKey: factsArray[indexPath.row].imageHref! as AnyObject) != nil {
+      cell.imageProfile.image = (cache.object(forKey: factsArray[indexPath.row].imageHref! as AnyObject) as! UIImage)
     }
     else{
       
       cell.activityIndicator.startAnimating()
       
-      service.getImageFromUrlString(urlString: self.factsArray[indexPath.row].imageHref!, completion: { image, error in
+      service.getImageFromUrlString(urlString: factsArray[indexPath.row].imageHref!){ image, error in
         
         cell.activityIndicator.stopAnimating()
-
+        
         //Check For Image
-        if let thereIsImage = image{
+        if let thereIsImage = image {
           
           DispatchQueue.main.async{
-            if let updateCell = tableView.cellForRow(at: indexPath) as? POCTableViewCell{
+            if let updateCell = tableView.cellForRow(at: indexPath) as? POCTableViewCell {
               
               updateCell.imageProfile.image = thereIsImage
               
@@ -161,7 +161,7 @@ extension POCFactsTableViewController {
         }
         
         
-      })
+      }
     }
     
     return cell

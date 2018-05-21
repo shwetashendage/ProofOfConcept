@@ -20,27 +20,27 @@ class POCTableViewCell: UITableViewCell {
     
     super.init(style: .default, reuseIdentifier: reuseIdentifier)
     
-    self.titleLabel.numberOfLines = 0
-    self.titleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-    self.titleLabel.textColor = UIColor.darkGray
-    contentView.addSubview(self.titleLabel)
+    titleLabel.numberOfLines = 0
+    titleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+    titleLabel.textColor = UIColor.darkGray
+    contentView.addSubview(titleLabel)
     
-    self.descriptionLabel.numberOfLines = 0
-    self.descriptionLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-    self.descriptionLabel.textColor = UIColor.lightGray
-    contentView.addSubview(self.descriptionLabel)
+    descriptionLabel.numberOfLines = 0
+    descriptionLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+    descriptionLabel.textColor = UIColor.lightGray
+    contentView.addSubview(descriptionLabel)
     
-    self.imageProfile.contentMode = .scaleAspectFit
-    self.imageProfile.image = #imageLiteral(resourceName: "default-user-image")
-    contentView.addSubview(self.imageProfile)
+    imageProfile.contentMode = .scaleAspectFit
+    imageProfile.image = #imageLiteral(resourceName: "default-user-image")
+    contentView.addSubview(imageProfile)
     
     
-    self.activityIndicator.hidesWhenStopped = true
-    contentView.addSubview(self.activityIndicator)
+    activityIndicator.hidesWhenStopped = true
+    contentView.addSubview(activityIndicator)
     
     let padding:UIEdgeInsets = UIEdgeInsetsMake(POCConstants.POCPadding, POCConstants.POCPadding, POCConstants.POCPadding, POCConstants.POCPadding)
     
-    self.imageProfile.snp.makeConstraints { (make) -> Void in
+    imageProfile.snp.makeConstraints { (make) -> Void in
       make.top.equalTo(contentView).offset(padding.top)
       make.left.equalTo(contentView).offset(padding.left)
       make.height.width.equalTo(POCConstants.POCImageHeightWidth)
@@ -48,22 +48,22 @@ class POCTableViewCell: UITableViewCell {
       
     }
     
-    self.activityIndicator.snp.makeConstraints { (make) -> Void in
-      make.centerX.equalTo(self.imageProfile.snp.centerX)
-      make.centerY.equalTo(self.imageProfile.snp.centerY)
+    activityIndicator.snp.makeConstraints { (make) -> Void in
+      make.centerX.equalTo(imageProfile.snp.centerX)
+      make.centerY.equalTo(imageProfile.snp.centerY)
     }
     
-    self.titleLabel.snp.makeConstraints { (make) -> Void in
-      make.top.equalTo(self.imageProfile.snp.top)
+    titleLabel.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(imageProfile.snp.top)
       make.right.equalTo(contentView).offset(-padding.right)
-      make.left.equalTo(self.imageProfile.snp.right).offset(padding.right)
+      make.left.equalTo(imageProfile.snp.right).offset(padding.right)
     }
     
-    self.descriptionLabel.snp.makeConstraints { (make) -> Void in
+    descriptionLabel.snp.makeConstraints { (make) -> Void in
       
-      make.top.equalTo(self.titleLabel.snp.bottom).offset(padding.bottom)
+      make.top.equalTo(titleLabel.snp.bottom).offset(padding.bottom)
       make.right.equalTo(contentView).offset(-padding.right)
-      make.left.equalTo(self.imageProfile.snp.right).offset(padding.right)
+      make.left.equalTo(imageProfile.snp.right).offset(padding.right)
       make.bottom.lessThanOrEqualTo(-padding.bottom)
     }
     

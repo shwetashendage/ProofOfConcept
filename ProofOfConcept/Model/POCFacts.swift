@@ -10,25 +10,24 @@ import Foundation
 
 class POCFacts{
   
-  let title: String
-  let imageHref: String?
-  let description: String?
+  let title: String?
+  var imageHref: String? = POCConstants.POCNoImage
+  var description: String? = ""
   
-  init(title: String, imageHref: String?, description: String?) {
+  init?(title: String?, imageHref: String?, description: String?) {
+    
+    guard let title = title else {
+      return nil
+    }
     
     self.title = title
     
     if let imageHref = imageHref {
       self.imageHref = imageHref
-    } else {
-      self.imageHref = POCConstants.POCNoImage
-      
     }
     
     if let description = description {
       self.description = description
-    } else {
-      self.description = ""
     }
     
   }

@@ -23,7 +23,7 @@ class POCServiceClass {
   typealias JSONDictinary = [String: Any]
   typealias factsResult = ([POCFacts]?, String, String) -> ()
   typealias factsImageResult = (UIImage?, String) -> ()
-
+  
   func getFacts(completion: @escaping factsResult) {
     
     //    Webservice call
@@ -70,17 +70,14 @@ class POCServiceClass {
         
         headerTitle = json[POCConstants.POCKeys.POCHeaderTitle].stringValue
         
-        guard let array = json[POCConstants.POCKeys.POCArray].arrayObject else{
+        guard let array = json[POCConstants.POCKeys.POCArray].arrayObject as? [JSONDictinary] else{
           return
         }
-        for factsDictionary in array {
-          if let factsDictionary = factsDictionary as? JSONDictinary,
-            let title = factsDictionary[POCConstants.POCKeys.POCTitle] as? String{
-            
-            factsArray.append(POCFacts(title: title, imageHref: factsDictionary[POCConstants.POCKeys.POCImage] as? String, description: factsDictionary[POCConstants.POCKeys.POCDescription] as? String))
-            
-          }
-        }
+        
+        self.factsArray = array.flatMap({ factsDictionary in
+          POCFacts(title: factsDictionary[POCConstants.POCKeys.POCTitle] as? String, imageHref: factsDictionary[POCConstants.POCKeys.POCImage] as? String, description: factsDictionary[POCConstants.POCKeys.POCDescription] as? String)
+        })
+        
       }
       catch let parseError as NSError {
         errorMessage += "Error while parsing Json: \(parseError.localizedDescription)\n"
@@ -101,19 +98,15 @@ class POCServiceClass {
         
         self.errorString += "Error cause: " + error.localizedDescription + "\n"
         
-        
         DispatchQueue.main.async {
-          
           completion(nil, self.errorString)
-          
         }
-        
         
       }else if let data = data,
         let response = response as? HTTPURLResponse ,
         response.statusCode == 200 {
         
-        if let image = UIImage(data: data){
+        if let image = UIImage(data: data) {
           DispatchQueue.main.async {
             
             completion(image, self.errorString)
