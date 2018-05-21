@@ -8,13 +8,18 @@
 
 import UIKit
 
-class FactsTableViewController: UITableViewController {
+class POCFactsTableViewController: UITableViewController {
+  
+  let service = POCServiceClass()
   
   //    MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.title = "POC"
+    
+    //    Call JSON Feed
+    service.getFacts()
     
   }
   
