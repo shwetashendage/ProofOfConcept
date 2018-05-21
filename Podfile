@@ -12,6 +12,11 @@ target 'ProofOfConcept' do
     # Pods for testing
   end
   
+  target 'ProofOfConceptDataParsingTests' do
+    inherit! :search_paths
+    pod 'SwiftyJSON', '~> 4.0'
+  end
+  
   target 'ProofOfConceptUITests' do
     inherit! :search_paths
     # Pods for testing

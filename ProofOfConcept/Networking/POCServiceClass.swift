@@ -12,12 +12,13 @@ import SwiftyJSON
 
 class POCServiceClass {
   
-  let defaultSession = URLSession(configuration: .default)
+  var defaultSession = URLSession(configuration: .default)
   var dataTask: URLSessionDataTask?
   
   var errorMessage = ""
   
-  let factsArray: [Any] = []
+  var factsArray: [Any] = []
+  typealias JSONDictinary = [String: Any]
   
   func getFacts() {
     
@@ -60,13 +61,19 @@ class POCServiceClass {
         guard let array = json[POCConstants.POCKeys.POCArray].arrayObject else{
           return
         }
-        print(array)
+        for factsDictionary in array {
+          if let factsDictionary = factsDictionary as? JSONDictinary,
+            let title = factsDictionary[POCConstants.POCKeys.POCTitle] as? String{
+            
+            factsArray.append(POCFacts(title: title, imageHref: factsDictionary[POCConstants.POCKeys.POCImage] as? String, description: factsDictionary[POCConstants.POCKeys.POCDescription] as? String))
+            
+          }
+        }
       }
       catch let parseError as NSError {
         errorMessage += "Error while parsing Json: \(parseError.localizedDescription)\n"
         return
       }
-      
       
     }
   }
