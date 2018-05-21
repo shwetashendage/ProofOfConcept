@@ -7,6 +7,8 @@
 //
 
 import Foundation
+//Parser
+import SwiftyJSON
 
 class POCServiceClass {
   
@@ -19,7 +21,7 @@ class POCServiceClass {
   
   func getFacts() {
     
-    //Webservice call
+    //    Webservice call
     dataTask?.cancel()
     
     guard let url = URL(string: POCConstants.POCFactsUrl) else {
@@ -37,13 +39,36 @@ class POCServiceClass {
       } else if let data = data,
         let response = response as? HTTPURLResponse,
         response.statusCode == 200 {
-        print(data)
+        //        Parse Data
+        self.createFactsArray(data)
       }
       
     }
     
     dataTask?.resume()
     
+  }
+  func createFactsArray(_ data: Data) {
+    //     Parse data
+    let jsonString = NSString(data: data, encoding: String.Encoding.isoLatin1.rawValue)
+    
+    if let dataFromString = jsonString?.data(using: String.Encoding.utf8.rawValue) {
+      do{
+        
+        let json = try JSON(data: dataFromString)
+        
+        guard let array = json[POCConstants.POCKeys.POCArray].arrayObject else{
+          return
+        }
+        print(array)
+      }
+      catch let parseError as NSError {
+        errorMessage += "Error while parsing Json: \(parseError.localizedDescription)\n"
+        return
+      }
+      
+      
+    }
   }
   
 }
