@@ -12,6 +12,7 @@ struct POCConstants {
   
   static let POCFactsUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
   static let POCNoImage = "No Image"
+  static let POCTableViewIdentifier = "factsTableView"
 
   struct POCKeys {
     static let POCHeaderTitle = "title"

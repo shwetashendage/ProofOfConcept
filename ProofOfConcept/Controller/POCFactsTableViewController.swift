@@ -26,7 +26,7 @@ class POCFactsTableViewController: UITableViewController {
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 120
     self.tableView.separatorInset = .zero
-    self.tableView.accessibilityIdentifier = "factsTableView"
+    self.tableView.accessibilityIdentifier = POCConstants.POCTableViewIdentifier
     
     // Call JSON Feed
     getData()
